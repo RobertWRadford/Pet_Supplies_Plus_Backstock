@@ -11,17 +11,17 @@ def home_view(request, *args, **kwargs):
 	if request.user.is_active:
 		if 'remove' in request.POST:
 			stockItem.objects.get(pk=request.POST['item']).delete()
+			return redirect('home')
 		elif 'edit' in request.POST:
 			item = stockItem.objects.get(pk=request.POST['item'])
 			item.quantity = request.POST['quantity']
 			item.save()
+			return redirect('home')
 		elif 'new' in request.POST:
 			new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'])
 			new_item.save()
-		context = {
-			'items': stockItem.objects.all(),
-		}
-		return render(request, 'stock.html', context)
+			return redirect('home')
+		return render(request, 'stock.html', {'items': stockItem.objects.all()})
 	else:
 	    if request.method == 'POST':
 	        form = AuthenticationForm(request, data=request.POST)
