@@ -21,7 +21,9 @@ th, td{
 }
 
 input {
-	width: min(100px, 90%);
+	width: 90%;
+	border-radius: 3px;
+	font-size: max(1.6vw, 16px);
 }
 
 .removeCell {
@@ -33,5 +35,9 @@ input {
 }
 
 .newQuantity {
+	width:50%;
+}
+
+input[type=submit]{
 	width:40%;
 }
