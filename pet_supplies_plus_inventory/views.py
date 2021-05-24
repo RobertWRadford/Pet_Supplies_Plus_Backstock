@@ -27,9 +27,9 @@ def home_view(request, *args, **kwargs):
 	        form = AuthenticationForm(request, data=request.POST)
 	        if form.is_valid():
 	            login(request, form.get_user())
-	            return redirect('stock')
+	            return render(request, 'stock.html', {'items': stockItem.objects.all(),})
 	        else:
-	        	return render(request, 'index.html', {'form': form, 'incorrect': True})
+	        	return render(request, 'index.html', {'form': form, 'incorrect': True, 'username': request.POST['username']},)
 	    else:
 	        form = AuthenticationForm()
 	    return render(request, 'index.html', {'form': form})

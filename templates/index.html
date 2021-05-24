@@ -15,7 +15,11 @@
                 <h2 class="centeredText">Log In</h2>
                     <div class="FormCollection">
                         <div class="InputParent">
-                            <input type="text" class="InputChild" name="username" placeholder="Username" required="required">
+                            {% if username %}
+                                <input type="text" class="InputChild" name="username" placeholder="Username" required="required" value="{{username}}">
+                            {% else %}
+                                <input type="text" class="InputChild" name="username" placeholder="Username" required="required">
+                            {% endif %}
                         </div>
                     </div>
                 <div class="FormCollection">
