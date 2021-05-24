@@ -18,8 +18,9 @@ def home_view(request, *args, **kwargs):
 			item.save()
 			return redirect('home')
 		elif 'new' in request.POST:
-			new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'])
-			new_item.save()
+			if len(request.POST['brand']) and len(request.POST['product']) and request.POST['quantity']:
+				new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'])
+				new_item.save()
 			return redirect('home')
 		return render(request, 'stock.html', {'items': stockItem.objects.all()})
 	else:
