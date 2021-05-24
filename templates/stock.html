@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+          <link rel="stylesheet" href="{% static 'stock.css' %}">
+        {% load static %}
+        <title>PSP Back Stock</title>
+    </head>
+    <body>
+       <table>
+            <tr>
+                <th>Brand:</th>
+                <th>Product:</th>
+                <th>Quantity:</th>
+                <th>New Quantity:</th>
+                <th class='removeCell'>Remove Product:</th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{item.brand}}</td>
+                    <td>{{item.product}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td><form method="post">
+                        {% csrf_token %}
+                        <input type='hidden' name='edit' value='True'>
+                        <input type='hidden' name='item' value='{{item.pk}}'>
+                        <input class="newQuantity" type="number" name="quantity" min="0" step="1" value="{{item.quantity}}"/>
+                        <input type="submit" name="submit" value="save">
+                    </form></td>
+                    <td class='removeCell'><form method="post">
+                        {% csrf_token %}
+                        <input type='hidden' name='remove' value='True'>
+                        <input type='hidden' name='item' value='{{item.pk}}'>
+                        <input type="submit" name="remove" value="Del"/>
+                    </form></td>
+                </tr>
+            {% endfor %}
+            <form method='post'>
+                <input type="hidden" name="new">
+                <tr>
+                    <td>
+                        <input type="text" name="brand" placeholder="brand..">
+                    </td>
+                     <td>
+                        <input type="text" name="product" placeholder="description..">
+                    </td>
+                     <td>
+                        <input type="number" name="quantity" placeholder="1" min="0" step="1">
+                    </td>
+                    <td>
+                        <input type="submit" name="create" value="Add">
+                    </td>
+                    <td class='removeCell'></td>
+                </tr>
+            </form>
+       </table>
+    </body>
+</html>
