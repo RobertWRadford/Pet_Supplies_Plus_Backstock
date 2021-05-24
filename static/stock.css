@@ -22,7 +22,7 @@ th, td{
 
 input {
 	width: 90%;
-	border-radius: 3px;
+	border-radius: 5px;
 	font-size: max(1.6vw, 16px);
 }
 
@@ -40,4 +40,10 @@ input {
 
 input[type=submit]{
 	width:40%;
+}
+
+input[type=submit]:hover {
+	cursor: pointer;
+	background-color: black;
+	color: white;
 }
