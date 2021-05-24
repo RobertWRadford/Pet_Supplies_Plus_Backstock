@@ -38,6 +38,7 @@
                 </tr>
             {% endfor %}
             <form method='post'>
+                {% csrf_token %}
                 <input type="hidden" name="new">
                 <tr>
                     <td>
