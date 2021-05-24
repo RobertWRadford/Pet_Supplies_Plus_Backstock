@@ -8,16 +8,19 @@ from .models import stockItem
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return redirect('stock')
-        else:
-        	return render(request, 'index.html', {'form': form, 'incorrect': True})
-    else:
-        form = AuthenticationForm()
-    return render(request, 'index.html', {'form': form})
+	if 'reroute' in request.POST:
+		return redirect('stock')
+	else:
+	    if request.method == 'POST':
+	        form = AuthenticationForm(request, data=request.POST)
+	        if form.is_valid():
+	            login(request, form.get_user())
+	            return redirect('stock')
+	        else:
+	        	return render(request, 'index.html', {'form': form, 'incorrect': True})
+	    else:
+	        form = AuthenticationForm()
+	    return render(request, 'index.html', {'form': form})
 
 def stock_view(request, *args, **kwargs):
 	if 'remove' in request.POST:

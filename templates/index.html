@@ -10,28 +10,34 @@
     </head>
     <body>
         <div class="login">
-            <form method="post">
-                {% csrf_token %}
-                <h2 class="centeredText">Log In</h2>
+            {% if request.user.is_active %}
+                <form method="post">
+                    <input type="submit" name="reroute" value="View Stock">
+                </form>
+            {%else%}
+                <form method="post">
+                    {% csrf_token %}
+                    <h2 class="centeredText">Log In</h2>
+                        <div class="FormCollection">
+                            <div class="InputParent">
+                                <input type="text" class="InputChild" name="username" placeholder="Username" required="required">
+                            </div>
+                        </div>
                     <div class="FormCollection">
                         <div class="InputParent">
-                            <input type="text" class="InputChild" name="username" placeholder="Username" required="required">
+                            <input type="password" class="InputChild" name="password" placeholder="Password" required="required">
                         </div>
+                        {% if incorrect %}
+                            <section id='bad_pass'>
+                                Incorrect Password!
+                            </section>
+                        {% endif %}
                     </div>
-                <div class="FormCollection">
-                    <div class="InputParent">
-                        <input type="password" class="InputChild" name="password" placeholder="Password" required="required">
-                    </div>
-                    {% if incorrect %}
-                        <section id='bad_pass'>
-                            Incorrect Password!
-                        </section>
-                    {% endif %}
-                </div>
-                    <div class="FormCollection">
-                        <input type="submit" class="loginbtn" value="Sign In">
-                    </div>
-            </form>
+                        <div class="FormCollection">
+                            <input type="submit" class="loginbtn" value="Sign In">
+                        </div>
+                </form>
+            {%endif%}
         </div>
     </body>
 </html>
