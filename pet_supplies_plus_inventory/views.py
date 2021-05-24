@@ -8,8 +8,20 @@ from .models import stockItem
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-	if 'reroute' in request.POST:
-		return redirect('stock')
+	if request.User.is_active:
+		if 'remove' in request.POST:
+			stockItem.objects.get(pk=request.POST['item']).delete()
+		elif 'edit' in request.POST:
+			item = stockItem.objects.get(pk=request.POST['item'])
+			item.quantity = request.POST['quantity']
+			item.save()
+		elif 'new' in request.POST:
+			new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'])
+			new_item.save()
+		context = {
+			'items': stockItem.objects.all(),
+		}
+		return render(request, 'stock.html', context)
 	else:
 	    if request.method == 'POST':
 	        form = AuthenticationForm(request, data=request.POST)
@@ -21,18 +33,3 @@ def home_view(request, *args, **kwargs):
 	    else:
 	        form = AuthenticationForm()
 	    return render(request, 'index.html', {'form': form})
-
-def stock_view(request, *args, **kwargs):
-	if 'remove' in request.POST:
-		stockItem.objects.get(pk=request.POST['item']).delete()
-	elif 'edit' in request.POST:
-		item = stockItem.objects.get(pk=request.POST['item'])
-		item.quantity = request.POST['quantity']
-		item.save()
-	elif 'new' in request.POST:
-		new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'])
-		new_item.save()
-	context = {
-		'items': stockItem.objects.all(),
-	}
-	return render(request, 'stock.html', context)
