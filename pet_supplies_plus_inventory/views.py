@@ -8,7 +8,7 @@ from .models import stockItem
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-	if request.User.is_active:
+	if request.user.is_active:
 		if 'remove' in request.POST:
 			stockItem.objects.get(pk=request.POST['item']).delete()
 		elif 'edit' in request.POST:
