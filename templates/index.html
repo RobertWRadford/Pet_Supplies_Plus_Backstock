@@ -11,7 +11,8 @@
     <body>
         <div class="login">
             {% if request.user.is_active %}
-                <form method="post">
+                <form class='loggedIn' method="post">
+                    {% csrf_token %}
                     <input type="submit" name="reroute" value="View Stock">
                 </form>
             {%else%}
