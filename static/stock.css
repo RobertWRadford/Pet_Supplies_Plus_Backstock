@@ -39,7 +39,7 @@ input {
 }
 
 input[type=submit]{
-	width:40%;
+	width: max(40%,60px);
 }
 
 input[type=submit]:hover {
