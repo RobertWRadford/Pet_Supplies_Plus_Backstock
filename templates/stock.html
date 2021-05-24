@@ -13,7 +13,7 @@
             <tr>
                 <th>Brand:</th>
                 <th>Product:</th>
-                <th>Quantity:</th>
+                <th class='quantCell'>Quantity:</th>
                 <th>New Quantity:</th>
                 <th class='removeCell'>Remove Product:</th>
             </tr>
@@ -21,7 +21,7 @@
                 <tr>
                     <td>{{item.brand}}</td>
                     <td>{{item.product}}</td>
-                    <td>{{item.quantity}}</td>
+                    <td class='quantCell'>{{item.quantity}}</td>
                     <td><form method="post">
                         {% csrf_token %}
                         <input type='hidden' name='edit' value='True'>
@@ -48,7 +48,7 @@
                         <input type="text" name="product" placeholder="description..">
                     </td>
                      <td>
-                        <input type="number" name="quantity" placeholder="1" min="0" step="1">
+                        <input  class='quantCell' type="number" name="quantity" placeholder="1" min="0" step="1">
                     </td>
                     <td>
                         <input type="submit" name="create" value="Add">

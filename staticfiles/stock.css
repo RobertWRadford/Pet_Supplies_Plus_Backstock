@@ -1,0 +1,38 @@
+body{
+	background-color: #882c94;
+}
+
+table {
+	border-collapse: collapse;
+	background-color: #00af41;
+	margin-top: 50vh;
+	margin-left: 50%;
+	transform: translate(-50%,-50%);
+	table-layout: fixed;
+	width: max(80vw, 400px);
+}
+
+th, td{
+	padding: max(.5vw, 5px);
+	border: 1px solid black;
+	width: max(20vw, 100px);
+	font-size: max(1.6vw, 16px);
+	text-align: center;
+	align-content: center;
+}
+
+input {
+	width: min(100px, 90%);
+}
+
+.removeCell {
+	width: max(10vw, 50px);
+}
+
+.quantCell {
+	width: max(10vw, 50px);
+}
+
+.newQuantity {
+	width:40%;
+}
