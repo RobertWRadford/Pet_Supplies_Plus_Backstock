@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate, logout, tokens
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, forms
 from django.contrib.auth.models import User
 from .models import stockItem
+from .forms import brandSelect, brand_choices
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -12,6 +13,14 @@ def home_view(request, *args, **kwargs):
 		if 'remove' in request.POST:
 			stockItem.objects.get(pk=request.POST['item']).delete()
 			return redirect('home')
+		elif 'brand' in request.POST:
+			print(request.POST['brand'])
+			if request.POST['brand'] == '0':
+				return redirect('home')
+			else:
+				for tup in brand_choices:
+					if request.POST['brand'] == tup[0]:
+						return render(request, 'stock.html', {'items': stockItem.objects.filter(brand=tup[1]).order_by('brand', 'product'), 'brandForm': brandSelect(),})
 		elif 'edit' in request.POST:
 			item = stockItem.objects.get(pk=request.POST['item'])
 			item.quantity = request.POST['quantity']
@@ -25,13 +34,13 @@ def home_view(request, *args, **kwargs):
 				except:
 					return redirect('home')
 			return redirect('home')
-		return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product')})
+		return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product'), 'brandForm': brandSelect(),})
 	else:
 	    if request.method == 'POST':
 	        form = AuthenticationForm(request, data=request.POST)
 	        if form.is_valid():
 	            login(request, form.get_user())
-	            return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product'),})
+	            return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product'), 'brandForm': brandSelect(),})
 	        else:
 	        	return render(request, 'index.html', {'form': form, 'incorrect': True, 'username': request.POST['username']},)
 	    else:

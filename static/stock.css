@@ -4,6 +4,38 @@ body{
 	margin: 0;
 }
 
+.filtering {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	background-color: #101110;
+	padding: max(1vw, 10px) 0 max(1vw, 10px) 0;
+	z-index: 2;
+	text-align: center;
+}
+
+.filtering > form > label {
+	font-size: max(1.6vw, 16px);
+	font-weight: 700;
+	color: white;
+}
+
+#submitBtn {
+	width: auto;
+	padding: max(5px,.5vw);
+	font-size: max(1.4vw, 14px);
+}
+
+.filtering > form > select {
+	display: block;
+	margin: 10px 0 10px 0;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	background: #3f443f;
+	color: white;
+	text-align: center;
+}
+
 .filler {
 	width: 100%;
 	height: max(1vw, 10px);
@@ -11,7 +43,7 @@ body{
 }
 
 .product {
-        border: solid white;
+    border: solid white;
 	border-width: 2px 0 2px 0;
 	padding-top: max(1vw,10px);
 	padding-bottom: max(1vw,10px);
@@ -39,7 +71,7 @@ body{
 }
 
 .text {
-	width: 80%;
+	width: 70%;
 	grid-column: 1 / 2;
 	text-align: center;
 	display: flex;
@@ -53,17 +85,20 @@ body{
 }
 
 .brand {
-	font-size: max(1.8vw, 18px);
+	font-size: max(1.4vw, 14px);
+	margin: max(6px, .6vw) 0 max(6px, .6vw) 0;
 }
 
 .description {
-	width: 80%;
+	width: 70%;
 	font-weight: 500;
-	font-size: max(1.4vw, 14px);
+	font-size: max(1vw, 10px);
+	margin: max(6px, .6vw) 0 max(6px, .6vw) 0;
 }
 
 .upc {
-	font-size: max(1.6vw, 16px);
+	font-size: max(1.2vw, 12px);
+	margin: max(6px, .6vw) 0 max(6px, .6vw) 0;
 }
 
 .forms {
