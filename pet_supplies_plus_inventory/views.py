@@ -22,13 +22,13 @@ def home_view(request, *args, **kwargs):
 				new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'])
 				new_item.save()
 			return redirect('home')
-		return render(request, 'stock.html', {'items': stockItem.objects.all()})
+		return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product')})
 	else:
 	    if request.method == 'POST':
 	        form = AuthenticationForm(request, data=request.POST)
 	        if form.is_valid():
 	            login(request, form.get_user())
-	            return render(request, 'stock.html', {'items': stockItem.objects.all(),})
+	            return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product'),})
 	        else:
 	        	return render(request, 'index.html', {'form': form, 'incorrect': True, 'username': request.POST['username']},)
 	    else:

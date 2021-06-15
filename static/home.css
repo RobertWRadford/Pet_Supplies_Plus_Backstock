@@ -1,9 +1,9 @@
 body {
-	background-color: #882c94;
+	background-color: #101110;
 }
 
 .login {
-	background-color: #00af41;
+	background-color: #242724;
 	width: max(50vw, 300px);
 	margin-left: 50%;
 	margin-top: 50vh;
@@ -13,6 +13,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	border-radius: 10px;
+	border: solid white 2px;
 }
 
 .loggedIn {
@@ -28,23 +29,34 @@ body {
     -webkit-text-stroke-color: black;
 }
 
-input{
+input[type=text], input[type=password]{
 	padding: max(.5vw,5px);
-	border-radius: 5px;
 	margin-bottom: 5%;
-	font-size: max(2vw, 20px);
+	font-size: max(2.4vw, 24px);
+	color: white;
+	background-color: #3f443f;
+	border-radius: 5px;
+	width: 60%;
+	margin-left: 50%;
+	transform: translateX(-50%);
 }
 
 .loginbtn {
 	margin-left: 50%;
 	transform: translate(-50%);
 	margin-bottom: 15%;
+	color: #E3e3e1;
+	background-color: #21a131;
+	border-radius: max(.5vw, 5px);
+	font-size: max(2vw, 20px);
+	font-weight: 700;
+	padding: max(.5vw, 5px);
 }
 
 .loginbtn:hover {
-	background-color: black;
-	color: white;
 	cursor: pointer;
+	background-color: white;
+	color: black;
 }
 
 #bad_pass {
