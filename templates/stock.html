@@ -46,7 +46,7 @@
                     {% endif %}
                 </section>
             </div>
-            {% if not forloop.last %}
+            {% if not forloop.last and not request.user.is_superuser %}
                 <div class='filler'></div>
             {% endif %}
         {% endfor %}
