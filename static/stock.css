@@ -14,16 +14,16 @@ body{
 	text-align: center;
 }
 
-.filtering > form > label {
+.filtering > h1 {
 	font-size: max(1.6vw, 16px);
 	font-weight: 700;
 	color: white;
 }
 
-#submitBtn {
-	width: auto;
-	padding: max(5px,.5vw);
-	font-size: max(1.4vw, 14px);
+.filtering > form > label {
+	font-size: max(1.2vw, 12px);
+	font-weight: 500;
+	color: white;
 }
 
 .filtering > form > select {
@@ -34,6 +34,12 @@ body{
 	background: #3f443f;
 	color: white;
 	text-align: center;
+}
+
+#submitBtn {
+	width: auto;
+	padding: max(5px,.5vw);
+	font-size: max(1.4vw, 14px);
 }
 
 .filler {

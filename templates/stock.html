@@ -10,9 +10,10 @@
     </head>
     <body>
         <div class='filtering'>
+            <h1>Filter Options:</h1>
             <form method='post'>
                 {% csrf_token %}
-                {{brandForm}}
+                {{filterForm}}
                 <input id='submitBtn' type="submit" name="filter" value='Submit'/>
             </form>
         </div>
