@@ -15,7 +15,7 @@ body{
 }
 
 .filtering > h1 {
-	font-size: max(1.6vw, 16px);
+	font-size: max(1vw, 16px);
 	font-weight: 700;
 	color: white;
 	margin: 0;
@@ -26,7 +26,7 @@ body{
 }
 
 .selectionBlock > label {
-	font-size: max(1.2vw, 12px);
+	font-size: max(.8vw, 12px);
 	font-weight: 500;
 	color: white;
 }
@@ -36,23 +36,26 @@ body{
 	background: #3f443f;
 	color: white;
 	text-align: center;
+	border: 0px;
+	padding: 2px;
+	border-radius: 10px;
 }
 
 #submitBtn {
 	width: auto;
-	padding: max(5px,.5vw);
-	font-size: max(1.4vw, 14px);
+	padding: 5px;
+	font-size: max(.9vw, 14px);
 }
 
 .filler {
 	width: 100%;
-	height: max(1vw, 10px);
+	height: max(.7vw, 7px);
 	background-color: #101110;
 }
 
 .product, .create {
-    border: solid white;
-	border-width: 2px 0 2px 0;
+    border: solid #E3e3e1;
+	border-width: 1px 0 1px 0;
 	padding-top: max(1vw,10px);
 	padding-bottom: max(1vw,10px);
 	color:  white;
@@ -63,7 +66,7 @@ body{
 
 .details {
 	width: 100%;
-    border-right: solid white max(1px, .1vw);
+    border-right: solid #E3e3e1 max(1px, .1vw);
     display: grid;
     justify-items: center;
     padding: 10px 0 10px 0;
@@ -142,6 +145,7 @@ input[type=submit]{
 	width: 100%;
 	color: #E3e3e1;
 	background-color: #21a131;
+	border: 0px;
 	border-radius: 5px;
 	font-size: max(1.6vw, 16px);
 	font-weight: 700;

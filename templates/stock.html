@@ -54,7 +54,10 @@
                     {% endif %}
                 </section>
             </div>
-            {% if not forloop.last and not request.user.is_superuser %}
+            {% if not forloop.last %}
+                <div class='filler'></div>
+            {% endif %}
+            {% if forloop.last and request.user.is_superuser %}
                 <div class='filler'></div>
             {% endif %}
         {% endfor %}
@@ -64,9 +67,10 @@
                 <input type="hidden" name="new">
                 <div class='details'>
                     <section class='text'>
-                        <input type="text" name="brand" maxlength='25' placeholder="brand..">
+                        <input type="text" name="new_brand" maxlength='25' placeholder="brand..">
                         <input type="text" name="product" maxlength='75' placeholder="description..">
                         <input type="text" name="upc" maxlength='12' placeholder="UPC..">
+                        <input type="text" name="new_category" maxlength='25' placeholder="category..">
                     </section>
                 </div>    
                 <section class='forms'>
@@ -75,4 +79,23 @@
             </form>
         {% endif %}
     </body>
+    {% if brandFiltered or categoryFiltered %}
+        <script type="text/javascript">
+            function preSelect(){
+                {% if brandFiltered %}
+                    let brandName = {{brandFiltered}};
+                {% else %}
+                    let brandName = 0;
+                {% endif %}
+                {% if categoryFiltered %}
+                    let categoryName = {{categoryFiltered}};
+                {% else %}
+                    let categoryName = 0;
+                {% endif %}
+                document.getElementById('id_brand').options[brandName].selected = true;
+                document.getElementById('id_category').options[categoryName].selected = true;
+            }
+            preSelect();
+        </script>
+    {% endif %}
 </html>

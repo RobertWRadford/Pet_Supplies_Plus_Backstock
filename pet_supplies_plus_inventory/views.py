@@ -13,39 +13,39 @@ def home_view(request, *args, **kwargs):
 		if 'remove' in request.POST:
 			stockItem.objects.get(pk=request.POST['item']).delete()
 			return redirect('home')
-		elif 'brand' in request.POST or 'category' in request.POST:
-			if request.POST['brand'] == '0' and request.POST['category'] == '0':
-				return redirect('home')
-			elif request.POST['brand'] == '0':
-				for tup in category_choices:
-					if request.POST['category'] == tup[0]:
-						return render(request, 'stock.html', {'items': stockItem.objects.filter(category=tup[1]).order_by('brand', 'product'), 'filterForm': filterSelect(),})
-			elif request.POST['category'] == '0':
-				for tup in brand_choices:
-					if request.POST['brand'] == tup[0]:
-						return render(request, 'stock.html', {'items': stockItem.objects.filter(brand=tup[1]).order_by('brand', 'product'), 'filterForm': filterSelect(),})
-			else:
-				for tup in brand_choices:
-					if request.POST['brand'] == tup[0]:
-						brand = tup[1]
-				for tup in category_choices:
-					if request.POST['category'] == tup[0]:
-						category = tup[1]
-				return render(request, 'stock.html', {'items': stockItem.objects.filter(brand=brand, category=category).order_by('brand', 'product'), 'filterForm': filterSelect(),})
 		elif 'edit' in request.POST:
 			item = stockItem.objects.get(pk=request.POST['item'])
 			item.quantity = request.POST['quantity']
 			item.save()
 			return redirect('home')
 		elif 'new' in request.POST:
-			if len(request.POST['brand']) and len(request.POST['product']) and request.POST['quantity'] and request.POST['upc']:
+			if 'new_brand' in request.POST and 'product' in request.POST and 'quantity' in request.POST and 'upc' in request.POST:
 				try:
-					new_item = stockItem.objects.create(brand=request.POST['brand'], product=request.POST['product'], quantity=request.POST['quantity'], upc=request.POST['upc'])
+					new_item = stockItem.objects.create(brand=request.POST['new_brand'], product=request.POST['product'], quantity=request.POST['quantity'], upc=request.POST['upc'], category=request.POST['new_category'])
 					new_item.save()
 				except:
 					return redirect('home')
 			return redirect('home')
-		return render(request, 'stock.html', {'items': stockItem.objects.all().order_by('brand', 'product'), 'filterForm': filterSelect(),})
+		else:
+			brand_num, brand = '0', 'All Brands'
+			if 'brand' in request.POST:
+				for tup in brand_choices:
+					if request.POST['brand'] == tup[0]:
+						brand_num, brand = tup[0], tup[1]
+			category_num, category = '0', 'All Categories'
+			if 'category' in request.POST:
+				for tup in category_choices:
+					if request.POST['category'] == tup[0]:
+						category_num, category = tup[0], tup[1]
+			if brand_num == '0' and category_num == '0':
+				items = stockItem.objects.all().order_by('brand', 'product')
+			elif brand_num == '0':
+				items = stockItem.objects.filter(category=category).order_by('brand', 'product')
+			elif category_num == '0':
+				items = stockItem.objects.filter(brand=brand).order_by('brand', 'product')
+			else:
+				items = stockItem.objects.filter(brand=brand, category=category).order_by('brand', 'product')
+			return render(request, 'stock.html', {'items': items, 'filterForm': filterSelect(), 'brandFiltered': brand_num, 'categoryFiltered': category_num,})
 	else:
 	    if request.method == 'POST':
 	        form = AuthenticationForm(request, data=request.POST)
