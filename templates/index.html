@@ -32,10 +32,20 @@
                         </section>
                     {% endif %}
                 </div>
-                    <div class="FormCollection">
-                        <input type="submit" class="loginbtn" value="Sign In">
-                    </div>
+                <div class="FormCollection">
+                    <input type="submit" class="loginbtn" value="Sign In">
+                </div>
+            </form>
+            <form id='guestLogin' method='post'>
+                {% csrf_token %}
+                <input type='hidden' name='guest'>
+                <a onclick="submitMe()">Continue as a guest</a>
             </form>
         </div>
     </body>
+    <script type="text/javascript">
+        function submitMe(){
+            document.getElementById('guestLogin').submit();
+        }
+    </script>
 </html>

@@ -44,7 +44,7 @@ input[type=text], input[type=password]{
 .loginbtn {
 	margin-left: 50%;
 	transform: translate(-50%);
-	margin-bottom: 15%;
+	margin-bottom: 5%;
 	color: #E3e3e1;
 	background-color: #21a131;
 	border-radius: max(.5vw, 5px);
@@ -67,4 +67,11 @@ input[type=text], input[type=password]{
 	-webkit-text-stroke-width: max(.05vw,.5px);
     -webkit-text-stroke-color: black;
     margin-bottom: 5%;
+}
+
+#guestLogin {
+	margin-bottom: 25px;
+    color: #21a131;
+    text-decoration: underline;
+    font-size: max(2vw, 20px);
 }

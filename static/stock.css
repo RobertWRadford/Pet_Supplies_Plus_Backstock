@@ -4,6 +4,20 @@ body{
 	margin: 0;
 }
 
+#logoutAnchor {
+	position: absolute;
+	top: 5%;
+	right: 3%;
+    color: #21a131;
+    text-decoration: underline;
+    font-size: max(.8vw, 14px);
+}
+
+#logoutAnchor:hover {
+	cursor: pointer;
+	color: white;
+}
+
 .filtering {
 	position: sticky;
 	top: 0;
@@ -26,7 +40,7 @@ body{
 }
 
 .selectionBlock > label {
-	font-size: max(.8vw, 12px);
+	font-size: max(.8vw, 14px);
 	font-weight: 500;
 	color: white;
 }

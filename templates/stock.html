@@ -10,6 +10,11 @@
     </head>
     <body>
         <div class='filtering'>
+            <form id='logoutForm' method='post'>
+                {% csrf_token %}
+                <input type="hidden" name="logout">
+                <a id='logoutAnchor' onclick="logmeout();">Log Out</a>
+            </form>
             <h1>Filter Options:</h1>
             <form method='post'>
                 {% csrf_token %}
@@ -81,6 +86,9 @@
     </body>
     {% if brandFiltered or categoryFiltered %}
         <script type="text/javascript">
+            function logmeout(){
+                document.getElementById('logoutForm').submit();
+            }
             function preSelect(){
                 {% if brandFiltered %}
                     let brandName = {{brandFiltered}};
