@@ -18,19 +18,21 @@ body{
 	font-size: max(1.6vw, 16px);
 	font-weight: 700;
 	color: white;
+	margin: 0;
 }
 
-.filtering > form > label {
+.selectionBlock {
+	margin:  10px 0 10px 0;
+}
+
+.selectionBlock > label {
 	font-size: max(1.2vw, 12px);
 	font-weight: 500;
 	color: white;
 }
 
-.filtering > form > select {
-	display: block;
-	margin: 10px 0 10px 0;
-	margin-left: 50%;
-	transform: translateX(-50%);
+.selectionBlock > select {
+	margin-left: max(10px, 1vw);
 	background: #3f443f;
 	color: white;
 	text-align: center;

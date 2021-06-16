@@ -13,7 +13,14 @@
             <h1>Filter Options:</h1>
             <form method='post'>
                 {% csrf_token %}
-                {{filterForm}}
+                <div class='selectionBlock'>
+                    <label>Brand:</label>
+                    {{filterForm.brand}}
+                </div>
+                <div class='selectionBlock'>
+                    <label>Category:</label>
+                    {{filterForm.category}}
+                </div>
                 <input id='submitBtn' type="submit" name="filter" value='Submit'/>
             </form>
         </div>

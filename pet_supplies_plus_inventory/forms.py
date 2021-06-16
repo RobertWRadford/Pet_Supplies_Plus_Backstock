@@ -12,5 +12,5 @@ category_choices = [(str(i+1), category) for i, category in enumerate(categories
 category_choices.insert(0, ('0', 'All Categories'))
 
 class filterSelect(forms.Form):
-    brand = forms.ChoiceField(label='Brand', choices=brand_choices)
-    category = forms.ChoiceField(label='Category', choices=category_choices)
+    brand = forms.ChoiceField(choices=brand_choices)
+    category = forms.ChoiceField(choices=category_choices)
