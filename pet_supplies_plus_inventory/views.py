@@ -40,15 +40,19 @@ def home_view(request, *args, **kwargs):
                 for tup in category_choices:
                     if request.POST['category'] == tup[0]:
                         category_num, category = tup[0], tup[1]
-            if brand_num == '0' and category_num == '0':
-                items = stockItem.objects.all().order_by('brand', 'product')
-            elif brand_num == '0':
-                items = stockItem.objects.filter(category=category).order_by('brand', 'product')
-            elif category_num == '0':
-                items = stockItem.objects.filter(brand=brand).order_by('brand', 'product')
-            else:
-                items = stockItem.objects.filter(brand=brand, category=category).order_by('brand', 'product')
-            return render(request, 'stock.html', {'items': items, 'filterForm': filterSelect(), 'brandFiltered': brand_num, 'categoryFiltered': category_num,})
+            request.session['brandFiltered'] = brand_num
+            request.session['categoryFiltered'] = category_num
+        brand_num = request.session.get('brandFiltered', '0')
+        category_num = request.session.get('categoryFiltered', '0')
+        if brand_num == '0' and category_num == '0':
+            items = stockItem.objects.all().order_by('brand', 'product')
+        elif brand_num == '0':
+            items = stockItem.objects.filter(category=category).order_by('brand', 'product')
+        elif category_num == '0':
+            items = stockItem.objects.filter(brand=brand).order_by('brand', 'product')
+        else:
+            items = stockItem.objects.filter(brand=brand, category=category).order_by('brand', 'product')
+        return render(request, 'stock.html', {'items': items, 'filterForm': filterSelect(), 'brandFiltered': brand_num, 'categoryFiltered': category_num,})
     else:
         if request.method == 'POST':
             if 'guest' in request.POST:
