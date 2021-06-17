@@ -186,6 +186,16 @@ input[type=submit]:hover {
 	    justify-content: center;
 	    align-items: center;
 	}
+	.selectionBlock {
+		display: inline-block;
+		margin: max(1.5vw, 15px) 5% max(1vw, 10px) 0;
+	}
+	.selectionBlock > *, #submitBtn, #logoutAnchor {
+		font-size: max(1.4vw, 14px);
+	}
+	.filtering > h1 {
+		font-size: max(1.6vw, 16px);
+	}
 	.product, .create {
 		display: inline-grid;
 		width: 30%;
