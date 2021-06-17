@@ -29,7 +29,7 @@ body{
 }
 
 .filtering > h1 {
-	font-size: max(1vw, 16px);
+	font-size: max(1.6vw, 16px);
 	font-weight: 700;
 	color: white;
 	margin: 0;
@@ -52,14 +52,14 @@ body{
 	color: white;
 	text-align: center;
 	border: 0px;
-	padding: 2px;
+	padding: max(2px, .2vw);
 	border-radius: 10px;
 }
 
 #submitBtn {
 	width: auto;
-	padding: 5px;
-	font-size: max(.9vw, 14px);
+	padding: max(5px, .5vw);
+	font-size: max(1.4vw, 14px);
 }
 
 .filler {
