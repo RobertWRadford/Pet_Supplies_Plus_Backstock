@@ -10,7 +10,7 @@ body{
 	right: 3%;
     color: #21a131;
     text-decoration: underline;
-    font-size: max(.8vw, 14px);
+    font-size: max(1.4vw, 14px);
 }
 
 #logoutAnchor:hover {
@@ -40,12 +40,13 @@ body{
 }
 
 .selectionBlock > label {
-	font-size: max(.8vw, 14px);
+	font-size: max(1.4vw, 14px);
 	font-weight: 500;
 	color: white;
 }
 
 .selectionBlock > select {
+	font-size: max(1.4vw, 14px);
 	margin-left: max(10px, 1vw);
 	background: #3f443f;
 	color: white;
@@ -190,9 +191,6 @@ input[type=submit]:hover {
 	.selectionBlock {
 		display: inline-block;
 		margin: max(1.5vw, 15px) 5% max(1vw, 10px) 0;
-	}
-	.selectionBlock > *, #submitBtn, #logoutAnchor {
-		font-size: max(1.4vw, 14px);
 	}
 	.filtering > h1 {
 		font-size: max(1.6vw, 16px);
