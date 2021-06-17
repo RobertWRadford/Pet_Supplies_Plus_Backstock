@@ -176,3 +176,32 @@ input[type=submit]:hover {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+@media (min-width: 719px) {
+	body {
+	    display: flex;
+	    flex-direction: row;
+	    flex-wrap: wrap;
+	    align-content: center;
+	    justify-content: center;
+	    align-items: center;
+	}
+	.product, .create {
+		display: inline-grid;
+		width: 30%;
+		border-width: 1px;
+		border-radius: 15px;
+		margin: 25px 0 0 0;
+		height: max(15vw, 150px);
+	}
+	.create {
+		margin-left: 50%;
+		transform: translateX(-75%);
+		height: auto;
+	}
+	.filler {
+		background-color: transparent;
+		width: 2%;
+		display: inline;
+	}
+}
