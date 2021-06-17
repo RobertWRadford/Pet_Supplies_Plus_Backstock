@@ -40,10 +40,14 @@ def home_view(request, *args, **kwargs):
                 for tup in category_choices:
                     if request.POST['category'] == tup[0]:
                         category_num, category = tup[0], tup[1]
-            request.session['brandFiltered'] = brand_num
-            request.session['categoryFiltered'] = category_num
-        brand_num = request.session.get('brandFiltered', '0')
-        category_num = request.session.get('categoryFiltered', '0')
+            request.session['brandNum'] = brand_num
+            request.session['brandFiltered'] = brand
+            request.session['categoryNum'] = category_num
+            request.session['categoryFiltered'] = category
+        brand_num = request.session.get('brandNum', '0')
+        brand = request.session.get('brandFiltered', 'All Brands')
+        category_num = request.session.get('categoryNum', '0')
+        category = request.session.get('categoryFiltered', 'All Categories')
         if brand_num == '0' and category_num == '0':
             items = stockItem.objects.all().order_by('brand', 'product')
         elif brand_num == '0':
