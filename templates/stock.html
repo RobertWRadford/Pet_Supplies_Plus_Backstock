@@ -90,6 +90,7 @@
                 document.getElementById('logoutForm').submit();
             }
             function preSelect(){
+                console.log('{{brandFiltered}} & {{categoryFiltered}}');
                 {% if brandFiltered %}
                     let brandName = {{brandFiltered}};
                 {% else %}

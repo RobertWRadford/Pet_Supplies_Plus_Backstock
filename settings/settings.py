@@ -96,6 +96,9 @@ DATABASES = {
     },
 }
 
+SESSION_COOKIE_SECURE = False
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

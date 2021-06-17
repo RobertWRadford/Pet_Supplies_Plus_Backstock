@@ -29,7 +29,7 @@ def home_view(request, *args, **kwargs):
                 except:
                     return redirect('home')
             return redirect('home')
-        else:
+        elif request.POST.get('brand') or request.POST.get('category'):
             brand_num, brand = '0', 'All Brands'
             if 'brand' in request.POST:
                 for tup in brand_choices:
