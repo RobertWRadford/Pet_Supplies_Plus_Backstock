@@ -5,4 +5,4 @@ from .models import stockItem
 @admin.register(stockItem)
 class stockItemAdmin(admin.ModelAdmin):
 	list_display = ('__str__','quantity')
-	list_filter = ('brand', 'quantity')
+	list_filter = ('brand', 'quantity', 'category')
