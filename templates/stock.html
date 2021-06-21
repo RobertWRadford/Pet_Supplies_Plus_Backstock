@@ -65,6 +65,12 @@
             {% if forloop.last and request.user.is_superuser %}
                 <div class='filler'></div>
             {% endif %}
+        {% empty %}
+            <div class='product'>
+                <section class='text'>
+                    <h1 class='brand'>No products found.</h1>
+                </section>
+            </div>
         {% endfor %}
         {% if request.user.is_superuser %}
             <form method='post' class='create'>
