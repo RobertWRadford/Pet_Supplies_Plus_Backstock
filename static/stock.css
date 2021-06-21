@@ -79,6 +79,12 @@ body{
 	grid-template-columns: 75% 25%;
 }
 
+.product.empty {
+	grid-template-columns: 100%;
+	place-items: center;
+	padding: max(5vw,50px) 0 max(5vw,50px) 0;
+}
+
 .details {
 	width: 100%;
     border-right: solid #E3e3e1 max(1px, .1vw);
